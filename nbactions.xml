@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>run</actionName>
+            <packagings>
+                <packaging>war</packaging>
+                <packaging>ear</packaging>
+                <packaging>ejb</packaging>
+            </packagings>
+            <goals>
+                <goal>spring-boot:run</goal>
+            </goals>
+            <properties>
+                <Env.H2_DATASOURCE_URL>jdbc:h2:mem:rpas-dev</Env.H2_DATASOURCE_URL>
+                <Env.H2_DATASOURCE_USERNAME>sa</Env.H2_DATASOURCE_USERNAME>
+                <Env.H2_DATASOURCE_PASSWORD></Env.H2_DATASOURCE_PASSWORD>
+                <Env.PG_DATASOURCE_URL>jdbc:postgresql://localhost:5432/rpasdb?UseUnicode=false;characterEncoding=ISO-8859-1;charSet=ISO-8859-1</Env.PG_DATASOURCE_URL>
+                <Env.PG_DATASOURCE_USERNAME>rpas</Env.PG_DATASOURCE_USERNAME>
+                <Env.PG_DATASOURCE_PASSWORD>rpas</Env.PG_DATASOURCE_PASSWORD>
+            </properties>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <packagings>
+                <packaging>war</packaging>
+                <packaging>ear</packaging>
+                <packaging>ejb</packaging>
+            </packagings>
+            <goals>
+                <goal>spring-boot:run</goal>
+            </goals>
+            <properties>
+                <spring-boot.skipTests>true</spring-boot.skipTests>
+                <spring-boot.run.jvmArguments>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address}</spring-boot.run.jvmArguments>
+                
+                
+                
+                
+                
+                <jpda.listen>true</jpda.listen>
+                
+                
+                
+                
+                
+                <Env.H2_DATASOURCE_URL>jdbc:h2:mem:rpas-dev</Env.H2_DATASOURCE_URL>
+                
+                
+                
+                
+                
+                <Env.H2_DATASOURCE_USERNAME>sa</Env.H2_DATASOURCE_USERNAME>
+                
+                
+                
+                
+                
+                <Env.H2_DATASOURCE_PASSWORD></Env.H2_DATASOURCE_PASSWORD>
+                
+                
+                
+                
+                
+                <Env.PG_DATASOURCE_URL>jdbc:postgresql://localhost:5432/rpasdb?UseUnicode=false;characterEncoding=ISO-8859-1;charSet=ISO-8859-1</Env.PG_DATASOURCE_URL>
+                
+                
+                
+                
+                
+                <Env.PG_DATASOURCE_USERNAME>rpas</Env.PG_DATASOURCE_USERNAME>
+                
+                
+                
+                
+                
+                <Env.PG_DATASOURCE_PASSWORD>rpas</Env.PG_DATASOURCE_PASSWORD>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </properties>
+        </action>
+    </actions>

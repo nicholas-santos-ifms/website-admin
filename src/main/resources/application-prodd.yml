@@ -1,0 +1,82 @@
+#Env.PG_DATASOURCE_URL=jdbc:postgresql://localhost:5432/rpasdb
+#Env.PG_DATASOURCE_USERNAME=rpas
+#Env.PG_DATASOURCE_PASSWORD=rpas
+
+# porta do tomcat
+server:
+    port: 7000
+
+logging:
+    level:
+        root: INFO   
+
+#debug
+debug: false
+
+#Profile
+spring:
+    devtools:
+        add-properties: true
+
+## Datasourde
+    datasource:
+        driverClassName: org.postgresql.Driver
+        url: ${PG_DATASOURCE_URL}
+        username: ${PG_DATASOURCE_USERNAME}
+        password: ${PG_DATASOURCE_PASSWORD}
+    profiles:
+        active: prod
+    jpa:
+        properties: 
+            dialect: org.hibernate.dialect.PostgreSQLDialect
+## usado para controlar um BUG do postgresql
+            jdbc:
+                lob:
+                    non_contextual_creation: true
+            
+            hibernate:
+                show_sql: true
+                format_sql: true
+        hibernate:
+            ddl-auto: update
+# This property will register an OpenEntityManagerInViewInterceptor, which 
+# registers an EntityManager to the current thread, so you will have the same 
+# EntityManager until the web request is finished
+# see: https://stackoverflow.com/questions/30549489/what-is-this-spring-jpa-open-in-view-true-property-in-spring-boot
+        open-in-view: true
+        defer-datasource-initialization: true
+# SQL prod/test
+    sql:
+        init:
+#            plataform: dev
+            mode: NEVER
+    batch:
+        jdbc:
+            initialize-schema: EMBEDDED
+## MULTIPART (MultipartProperties)
+# Enable multipart uploads
+    servlet:
+        multipart:
+            enabled: true
+            file-size-threshold: 2KB
+            max-file-size: 200MB
+            max-request-size: 215MB
+
+# Main
+    main:
+        allow-circular-references: true
+        allow-bean-definition-overriding: true
+
+# Website admin properties
+rpas:
+    jwt:
+        secret: YOt7Nk5a6di17yh5p8ctxgx5fDWp16g1RhZ9Ut4oYNEu9NA5Q7WaRXDIsgWf2qdFqfjEXlqcNleT7BDa0eJun1x2qXnM6sRgeg0CebUa7iaftHMxn7OaIgqaZgFFsoMaghZ4s6XMEWxf8mEdiyDpeYeSK7v5rC7HCRi0f5V2rojrWgTYof7KKPceUnVZZlhVNFftCUjvfZBORkme3mWwbV3SHJ7P7mxPOmpFRBrzdIB6rc5AZs7b8q3xyKxJhEywqJ9VTO7uJa6PFAV7XnQ3pCmcDBu9JyShL2IVZoXKESNDaFuRqKNd1AW36sz1sxgq6K65hggUSF2WrRgxsNTKHAY4FnX9dSEtcteMMtdNk9pmz0tvWgkI97F25AVYaRNdudkljG8dPBcCVOsFdFY3owJLzaWepwjYa0uKTmfAuIGbtIKqRt9OG9sDVjuf7osQLZpGPo8eTP8Y1i0jF0wZURRpJEr0gbmVvnIkYyNXc5HG656E6QWSrLY3lodoM3Q0
+        expiration: 14400000
+        audience: websiteadmin
+        private.key: classpath:app.key
+        public.key: classpath:app.pub
+    from: no-reply@rpas.edu.br
+    reset-password-token-expiration: 3600000
+    reset-register-code-expiration: 3600000
+    urlFrontEnd: http://10.10.2.14:3000
+
