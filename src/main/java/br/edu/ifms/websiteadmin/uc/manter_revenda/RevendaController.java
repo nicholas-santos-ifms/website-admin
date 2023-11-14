@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.edu.ifms.websiteadmin.uc.manter_produto;
+package br.edu.ifms.websiteadmin.uc.manter_revenda;
 
+import br.edu.ifms.websiteadmin.uc.manter_produto.*;
 import br.edu.ifms.arch.v010.controller.AbstractSimpleController;
 import jakarta.transaction.Transactional;
 import java.net.URI;
@@ -30,50 +31,50 @@ import org.springframework.web.util.UriComponentsBuilder;
  * @author 1513003
  */
 @RestController
-@RequestMapping("/api/produto")
+@RequestMapping("/api/revenda")
 @Profile(value = {"prod", "dev", "test"})
-public class ProdutoController extends AbstractSimpleController<
-        Produto, Long, ProdutoDto, ProdutoForm, ProdutoRepository, ProdutoService> {
+public class RevendaController extends AbstractSimpleController<
+        Revenda, Long, RevendaDto, RevendaForm, RevendaRepository, RevendaService> {
 
     @Autowired
     @Override
-    public void setService(ProdutoService service) {
+    public void setService(RevendaService service) {
         super.service = service;
-        super.setMapper(ProdutoMapper.INSTANCE);
+        super.setMapper(RevendaMapper.INSTANCE);
     }
 
     @Override
-    protected URI createUri(Produto entity, UriComponentsBuilder uriBuilder) {
-        return uriBuilder.path("/api/produto/{id}")
+    protected URI createUri(Revenda entity, UriComponentsBuilder uriBuilder) {
+        return uriBuilder.path("/api/revenda/{id}")
                 .buildAndExpand(entity.getId())
                 .toUri();
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProdutoDto>> listar(
+    public ResponseEntity<Page<RevendaDto>> listar(
             @RequestParam(required = true) Long empresaId,
             @RequestParam(required = false) String nome,
             @PageableDefault(sort = "nome", direction = Sort.Direction.ASC, page = 0, size = 10) Pageable paginacao) {
         super.validate();
 
-        Page<Produto> page = service.listar(nome, empresaId, paginacao);
+        Page<Revenda> page = service.listar(nome, empresaId, paginacao);
         return ResponseEntity.ok(mapper.toDtoPage(page));
     }
 
     @GetMapping("/page-not-used")
     @Override
-    public ResponseEntity<Page<ProdutoDto>> listar(Pageable paginacao) {
+    public ResponseEntity<Page<RevendaDto>> listar(Pageable paginacao) {
         return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/list-not-used")
     @Override
-    public List<ProdutoDto> listar() {
+    public List<RevendaDto> listar() {
         return null;
     }
 
     @GetMapping("/list/{empresaId}")
-    public List<ProdutoDto> listar(@PathVariable(required = true) Long empresaId) {
+    public List<RevendaDto> listar(@PathVariable(required = true) Long empresaId) {
         this.validate();
         var entityList = service.listar(empresaId);
         return mapper.toDtoList(entityList);
@@ -81,12 +82,12 @@ public class ProdutoController extends AbstractSimpleController<
 
     @GetMapping("/not-used/{id}")
     @Override
-    public ResponseEntity<ProdutoDto> visualizar(@PathVariable Long id) {
+    public ResponseEntity<RevendaDto> visualizar(@PathVariable Long id) {
         return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/{empresaId}/{id}")
-    public ResponseEntity<ProdutoDto> visualizar(
+    public ResponseEntity<RevendaDto> visualizar(
             @PathVariable Long empresaId,
             @PathVariable Long id) {
         this.validate();
@@ -99,14 +100,14 @@ public class ProdutoController extends AbstractSimpleController<
     @PostMapping
     @Transactional
     @Override
-    public ResponseEntity<ProdutoDto> cadastrar(ProdutoForm form, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<RevendaDto> cadastrar(RevendaForm form, UriComponentsBuilder uriBuilder) {
         return ResponseEntity.notFound().build();
     }
 
     @PutMapping("/{id}")
     @Transactional
     @Override
-    public ResponseEntity<ProdutoDto> atualizar(Long id, ProdutoForm form) {
+    public ResponseEntity<RevendaDto> atualizar(Long id, RevendaForm form) {
         return ResponseEntity.notFound().build();
     }
 

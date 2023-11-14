@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.edu.ifms.websiteadmin.uc.manter_produto;
+package br.edu.ifms.websiteadmin.uc.manter_revenda;
 
 import br.edu.ifms.arch.v010.service.AbstractService;
 import java.util.ArrayList;
@@ -20,31 +20,31 @@ import org.springframework.util.StringUtils;
  * @author 1513003
  */
 @Service
-public class ProdutoService
-        extends AbstractService<Produto, Long, ProdutoForm, ProdutoRepository> {
+public class RevendaService
+        extends AbstractService<Revenda, Long, RevendaForm, RevendaRepository> {
 
     @Autowired
     @Override
-    public void setRepository(ProdutoRepository repository) {
+    public void setRepository(RevendaRepository repository) {
         this.repository = repository;
-        super.setMapper(ProdutoMapper.INSTANCE);
+        super.setMapper(RevendaMapper.INSTANCE);
     }
 
-    public Page<Produto> listar(String nome, Long empresaId, Pageable paginacao) {
-        List<Specification<Produto>> l = new ArrayList();
+    public Page<Revenda> listar(String nome, Long empresaId, Pageable paginacao) {
+        List<Specification<Revenda>> l = new ArrayList();
 
         if (empresaId == null || empresaId <= 0) {
-            throw new ProdutoNotFoundException("Produto inexistente");
+            throw new RevendaNotFoundException("Revenda inexistente");
         }
 
-        Specification<Produto> spec = (root, query, criteriaBuilder)
+        Specification<Revenda> spec = (root, query, criteriaBuilder)
                 -> criteriaBuilder.equal(
                         root.get("empresa").get("id"),
                         empresaId);
         l.add(spec);
 
         if (StringUtils.hasText(nome)) {
-            Specification<Produto> specification = (root, query, criteriaBuilder)
+            Specification<Revenda> specification = (root, query, criteriaBuilder)
                     -> criteriaBuilder.like(
                             criteriaBuilder.upper(root.get("nome")),
                             "%" + nome.toUpperCase() + "%");
@@ -55,7 +55,7 @@ public class ProdutoService
             return repository.findAll(paginacao);
         }
 
-        Specification<Produto> result = l.get(0);
+        Specification<Revenda> result = l.get(0);
         for (int i = 1; i < l.size(); i++) {
             result = Specification.where(result).and(l.get(i));
         }
@@ -63,11 +63,11 @@ public class ProdutoService
         return repository.findAll(result, paginacao);
     }
 
-    public Optional<Produto> buscarPor(Long empresaId, Long id) {
+    public Optional<Revenda> buscarPor(Long empresaId, Long id) {
         return repository.findByEmpresaIdAndId(empresaId, id);
     }
 
-    public List<Produto> listar(Long empresaId) {
+    public List<Revenda> listar(Long empresaId) {
         return repository.findByEmpresaId(empresaId);
     }
 

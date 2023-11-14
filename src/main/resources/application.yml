@@ -76,7 +76,7 @@ rpas:
         audience: websiteadmin
         private.key: classpath:app.key
         public.key: classpath:app.pub
-    from: no-reply@rpas.edu.br
+    from: no-reply@website-admin.edu.br
     reset-password-token-expiration: 3600000
     reset-register-code-expiration: 3600000
     urlFrontEnd: http://localhost:7000/api

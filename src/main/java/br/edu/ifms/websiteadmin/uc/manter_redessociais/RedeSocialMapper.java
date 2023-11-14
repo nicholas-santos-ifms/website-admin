@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package br.edu.ifms.websiteadmin.uc.manter_produto;
+package br.edu.ifms.websiteadmin.uc.manter_redessociais;
 
 import br.edu.ifms.arch.v010.BaseObjectMapper;
 import br.edu.ifms.arch.v010.ISimpleMapper;
@@ -19,26 +19,25 @@ import org.mapstruct.factory.Mappers;
 @Mapper(
         config = BaseObjectMapper.class
 )
-public interface ProdutoMapper
-        extends ISimpleMapper<Produto, ProdutoDto, ProdutoForm> {
+public interface RedeSocialMapper
+        extends ISimpleMapper<RedeSocial, RedeSocialDto, RedeSocialForm> {
 
-    public static final ProdutoMapper INSTANCE = Mappers.getMapper(ProdutoMapper.class);
+    public static final RedeSocialMapper INSTANCE = Mappers.getMapper(RedeSocialMapper.class);
 
     @InheritConfiguration(name = "toEntity")
     @Mapping(target = "empresa", ignore = true)
     @Override
-    public Produto formToEntity(ProdutoForm dto);
+    public RedeSocial formToEntity(RedeSocialForm dto);
 
     @Mapping(target = "empresa", ignore = true)
     @Override
-    public Produto dtoToEntity(ProdutoDto dto);
-    
+    public RedeSocial dtoToEntity(RedeSocialDto dto);
 
     @InheritConfiguration(name = "update")
     @Mapping(target = "empresa", ignore = true)
     @Override
-    public Produto update(
-            ProdutoForm dto,
-            @MappingTarget Produto entity);
+    public RedeSocial update(
+            RedeSocialForm dto,
+            @MappingTarget RedeSocial entity);
 
 }

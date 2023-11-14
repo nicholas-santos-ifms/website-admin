@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package br.edu.ifms.websiteadmin.uc.manter_produto;
+package br.edu.ifms.websiteadmin.uc.manter_publicacao;
 
 import br.edu.ifms.arch.v010.BaseObjectMapper;
 import br.edu.ifms.arch.v010.ISimpleMapper;
@@ -19,26 +19,26 @@ import org.mapstruct.factory.Mappers;
 @Mapper(
         config = BaseObjectMapper.class
 )
-public interface ProdutoMapper
-        extends ISimpleMapper<Produto, ProdutoDto, ProdutoForm> {
+public interface PublicacaoMapper
+        extends ISimpleMapper<Publicacao, PublicacaoDto, PublicacaoForm> {
 
-    public static final ProdutoMapper INSTANCE = Mappers.getMapper(ProdutoMapper.class);
+    public static final PublicacaoMapper INSTANCE = Mappers.getMapper(PublicacaoMapper.class);
 
     @InheritConfiguration(name = "toEntity")
     @Mapping(target = "empresa", ignore = true)
     @Override
-    public Produto formToEntity(ProdutoForm dto);
+    public Publicacao formToEntity(PublicacaoForm dto);
 
     @Mapping(target = "empresa", ignore = true)
     @Override
-    public Produto dtoToEntity(ProdutoDto dto);
+    public Publicacao dtoToEntity(PublicacaoDto dto);
     
 
     @InheritConfiguration(name = "update")
     @Mapping(target = "empresa", ignore = true)
     @Override
-    public Produto update(
-            ProdutoForm dto,
-            @MappingTarget Produto entity);
+    public Publicacao update(
+            PublicacaoForm dto,
+            @MappingTarget Publicacao entity);
 
 }
