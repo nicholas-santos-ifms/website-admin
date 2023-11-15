@@ -6,7 +6,7 @@ package br.edu.ifms.arch.v010.dto;
 
 /**
  * Interface para Formulário para BaseObject. Interface utilizada para definir
- os métodos básicos para a implementação do padrão DTO para envio de dados
+ os métodos básicos para a implementa��o do padrão DTO para envio de dados
  para os serviços cuja Classe de Negócio seja uma subclasse de
  <class>BaseObject</class>.
  *

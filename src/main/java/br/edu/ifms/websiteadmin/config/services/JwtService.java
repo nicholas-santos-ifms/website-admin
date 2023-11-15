@@ -44,7 +44,7 @@ public class JwtService {
     }
 
     /**
-     * Extração de claim. Método criado para extrair dados (claim) do token
+     * Extra��o de claim. Método criado para extrair dados (claim) do token
      *
      * @param <T>
      * @param token
@@ -61,7 +61,7 @@ public class JwtService {
     }
 
     /**
-     * Geração do token. Método usado para criar um token baseado no usuário e
+     * Gera��o do token. Método usado para criar um token baseado no usuário e
      * em propriedades (claims) adicionais
      *
      * @param extraClaims

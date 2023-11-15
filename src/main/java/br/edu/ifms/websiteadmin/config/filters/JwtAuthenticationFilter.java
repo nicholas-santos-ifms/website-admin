@@ -45,7 +45,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             @NonNull HttpServletResponse response,
             @NonNull FilterChain filterChain) throws ServletException, IOException {
         /**
-         * Recupera no cabeçalho a autorização e valida ela. Caso o filtro não
+         * Recupera no cabeçalho a autoriza��o e valida ela. Caso o filtro não
          * seja válido, então encaminha para o próximo filtro
          */
         final String header = request.getHeader(HttpHeaders.AUTHORIZATION);

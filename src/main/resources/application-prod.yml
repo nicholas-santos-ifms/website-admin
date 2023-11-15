@@ -1,14 +1,10 @@
-#Env.PG_DATASOURCE_URL=jdbc:postgresql://localhost:5432/rpasdb
-#Env.PG_DATASOURCE_USERNAME=rpas
-#Env.PG_DATASOURCE_PASSWORD=rpas
-
-# porta do tomcat
-server:
-    port: 7000
-
 logging:
     level:
-        root: INFO   
+        root: WARN
+        org:
+            hibernate: error
+            springframework:
+                web: debug
 
 #debug
 debug: false
@@ -16,7 +12,8 @@ debug: false
 #Profile
 spring:
     devtools:
-        add-properties: true
+        add-properties: false
+    profiles: prod
 
 ## Datasourde
     datasource:
@@ -24,48 +21,31 @@ spring:
         url: ${PG_DATASOURCE_URL}
         username: ${PG_DATASOURCE_USERNAME}
         password: ${PG_DATASOURCE_PASSWORD}
-    profiles:
-        active: prod
+        plataform: prod
+        initialization-mode: ALWAYS
     jpa:
+        show_sql: true
         properties: 
             dialect: org.hibernate.dialect.PostgreSQLDialect
 ## usado para controlar um BUG do postgresql
             jdbc:
                 lob:
                     non_contextual_creation: true
-            
             hibernate:
-                show_sql: true
                 format_sql: true
         hibernate:
             ddl-auto: update
-# This property will register an OpenEntityManagerInViewInterceptor, which 
-# registers an EntityManager to the current thread, so you will have the same 
-# EntityManager until the web request is finished
-# see: https://stackoverflow.com/questions/30549489/what-is-this-spring-jpa-open-in-view-true-property-in-spring-boot
-        open-in-view: true
-        defer-datasource-initialization: true
 # SQL prod/test
     sql:
         init:
-#            plataform: dev
             mode: NEVER
     batch:
-        jdbc:
-            initialize-schema: EMBEDDED
+        initialize-schema: NEVER
 ## MULTIPART (MultipartProperties)
 # Enable multipart uploads
     servlet:
         multipart:
-            enabled: true
-            file-size-threshold: 2KB
-            max-file-size: 200MB
-            max-request-size: 215MB
-
-# Main
-    main:
-        allow-circular-references: true
-        allow-bean-definition-overriding: true
+            location: ${user.dir}/webapps/websiteadmin/tmp
 
 # Website admin properties
 rpas:

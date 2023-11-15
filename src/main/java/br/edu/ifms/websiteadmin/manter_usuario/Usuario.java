@@ -55,7 +55,7 @@ public class Usuario extends BaseObject implements UserDetails, Serializable {
     /**
      * Atributo utilizado para registrar status do usu√°rio.
      *
-     * A situa√ß√£o pode ser:<br/>
+     * A situaÁ„o pode ser:<br/>
      * <ul>
      * <li>ATIVO</li>
      * <li>INATIVO</li>

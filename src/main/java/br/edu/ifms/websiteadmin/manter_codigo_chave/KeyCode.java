@@ -35,7 +35,7 @@ public class KeyCode {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     /**
-     * Gera o código de verificação de 6 dígitos
+     * Gera o código de verifica��o de 6 dígitos
      * @param mail
      * @return 
      * @throws java.security.NoSuchAlgorithmException

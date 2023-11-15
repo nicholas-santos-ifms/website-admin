@@ -25,8 +25,8 @@ import org.springframework.security.web.savedrequest.RequestCache;
 public class DevSecurityConfiguration {
 
     /**
-     * Método de configuração de segurança. Método utilizado para configurar a
-     * autenticação e a autorização de acesso ao sistema.
+     * Método de configura��o de segurança. Método utilizado para configurar a
+     * autentica��o e a autoriza��o de acesso ao sistema.
      *
      * @param http
      * @return
@@ -45,7 +45,7 @@ public class DevSecurityConfiguration {
         http.requestCache(cache -> cache.requestCache(nullRequestCache));
 
         /**
-         * Autorização de requisições no servidor
+         * Autoriza��o de requisições no servidor
          */
         http.authorizeHttpRequests(authorize
                 -> authorize
@@ -54,11 +54,11 @@ public class DevSecurityConfiguration {
         );
 
         /**
-         * Configuração do CORS para permitir acesso de aplicações externas
+         * Configura��o do CORS para permitir acesso de aplicações externas
          */
         http.cors();
         /**
-         * Desativar proteção csrf porque estamos trabalhando com serviços
+         * Desativar prote��o csrf porque estamos trabalhando com serviços
          */
         http.csrf((csrf) -> csrf.disable());
 

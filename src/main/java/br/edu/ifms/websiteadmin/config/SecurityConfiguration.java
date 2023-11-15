@@ -43,8 +43,8 @@ public class SecurityConfiguration {
     private LogoutHandler logoutHandler;
 
     /**
-     * MÃ©todo de configuraÃ§Ã£o de seguranÃ§a. MÃ©todo utilizado para configurar a
-     * autenticaÃ§Ã£o e a autorizaÃ§Ã£o de acesso ao sistema.
+     * M�todo de configura��o de seguran�a. M�todo utilizado para configurar a
+     * autentica��o e a autoriza��o de acesso ao sistema.
      *
      * @param http
      * @return
@@ -63,7 +63,7 @@ public class SecurityConfiguration {
         http.requestCache(cache -> cache.requestCache(nullRequestCache));
 
         /**
-         * AutorizaÃ§Ã£o de requisiÃ§Ãµes no servidor
+         * Autoriza��o de requisi�Ãµes no servidor
          */
         http.authorizeHttpRequests(authorize
                 -> authorize
@@ -78,43 +78,53 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.GET, "/api/code/verification/*")
                             .permitAll()
                         
-                        .requestMatchers(HttpMethod.GET, "/api/produto")
+                        .requestMatchers(HttpMethod.GET, "/api/produto", "/api/produto/*")
                             .permitAll()
-                        // autenticação
+                        .requestMatchers(HttpMethod.GET, "/api/cidade", "/api/cidade/*")
+                            .permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/pais", "/api/pais/*")
+                            .permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/uf", "/api/uf/*")
+                            .permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/rede-social", "/api/rede-social/*")
+                            .permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/publicacao", "/api/publicacao/*")
+                            .permitAll()
+                        // autentica��o
                         .requestMatchers("/api/auth", "/api/auth/**").permitAll()
-                        // visualização do swagger e do h2
-                        .requestMatchers("swagger-ui/**", "v3/api-docs/**", "h2-console/**").permitAll()
-                        // exige que a partir daqui qualquer requisição deve exigir autenticação
+                        // visualiza��o do swagger e do h2
+                        .requestMatchers("swagger-ui/**", "h2-console/**").permitAll()
+                        // exige que a partir daqui qualquer requisi��o deve exigir autentica��o
                         .anyRequest().permitAll()
                         
-//                        // exige que a partir daqui qualquer requisiÃ§Ã£o deve exigir autenticaÃ§Ã£o
-//                        .anyRequest().authenticated()
+                        // exige que a partir daqui qualquer requisi��o deve exigir autentica��o
+                        .anyRequest().authenticated()
         );
 
         /**
-         * ConfiguraÃ§Ã£o do CORS para permitir acesso de aplicaÃ§Ãµes externas
+         * Configura��o do CORS para permitir acesso de aplica�Ãµes externas
          */
         http.cors();
         /**
-         * Desativar proteÃ§Ã£o csrf porque estamos trabalhando com serviÃ§os
+         * Desativar prote��o csrf porque estamos trabalhando com servi�os
          */
         http.csrf((csrf) -> csrf.disable());
 
         /**
-         * NÃ£o utiliza gerenciamento de sessÃµes
+         * N�o utiliza gerenciamento de sessÃµes
          */
         http
                 .sessionManagement((session)
                         -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider);
         /**
-         * Filtros de controle de autenticaÃ§Ã£o por token
+         * Filtros de controle de autentica��o por token
          */
         http.addFilterBefore(
                 jwtAuthFilter,
                 UsernamePasswordAuthenticationFilter.class)
             .logout(logout -> logout
-                // URL padrÃ£o para logout
+                // URL padr�o para logout
                 .logoutUrl("/api/auth/logout")
                 .addLogoutHandler(logoutHandler)
                 .logoutSuccessHandler((request, response, authentication)

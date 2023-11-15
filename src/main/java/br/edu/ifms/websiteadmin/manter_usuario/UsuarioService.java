@@ -109,7 +109,7 @@ public class UsuarioService
     }
 
     /**
-     * Criação dos filtros. Método responsável por criar os filtros de busca
+     * Cria��o dos filtros. Método responsável por criar os filtros de busca
      * para listagem de usuários
      *
      * @param nome Busca por qualquer parte do nome
@@ -182,7 +182,7 @@ public class UsuarioService
      * @param nome Busca por qualquer parte do nome
      * @param perfilId Filtra os usuários pelo ID do perfil
      * @param status Filtra os usuários de acordo com seu STATUS
-     * @param paginacao Paginação a ser aplicada na busca
+     * @param paginacao Pagina��o a ser aplicada na busca
      * @return
      */
     public Page<Usuario> listar(
@@ -311,7 +311,7 @@ public class UsuarioService
 
     public Usuario alterarSenha(AlterarSenhaForm form) {
         if (!form.isValido()) {
-            throw new UsuarioNotFoundException("A confirmação da senha deve ser igual a nova senha informada!");
+            throw new UsuarioNotFoundException("A confirma��o da senha deve ser igual a nova senha informada!");
         }
 
         return repository

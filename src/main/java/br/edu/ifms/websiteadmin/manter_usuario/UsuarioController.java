@@ -190,14 +190,14 @@ public class UsuarioController
         if (optional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST.value()).body(
                     new MessageDto(HttpStatus.BAD_REQUEST.value(),
-                            "Erro de Solicitação",
+                            "Erro de Solicita��o",
                             "O e-mail informado não está cadastrado no sistema.")
             );
         }
 
         Usuario usuario = optional.get();
         /**
-         * Gera o token para realização de alteração de senha
+         * Gera o token para realiza��o de altera��o de senha
          */
         var keyCode = keyCodeService.gerarCodigoVerificacao(usuario.getEmail(), "");
         /**
@@ -212,7 +212,7 @@ public class UsuarioController
     public ResponseEntity<?> findById(@Valid @RequestBody ChangePasswordRequest form) {
         if (!form.getNovaSenha().equals(form.getConfirmarSenha())) {
             throw new UserServiceAuthenticationException(
-                    "A nova senha e a senha de confirmação não combinam!"
+                    "A nova senha e a senha de confirma��o não combinam!"
             );
         }
 
@@ -222,7 +222,7 @@ public class UsuarioController
             keyCode.setPassword(form.getNovaSenha());
             service.resetPassword(keyCode);
             /**
-             * Exclui o código após a alteração da senha
+             * Exclui o código após a altera��o da senha
              */
             keyCodeService.desativarCodigosPor(keyCode.getMail());
             return ResponseEntity.ok().body(new MessageDto(HttpStatus.OK.value(), "Senha alterada com sucesso!"));

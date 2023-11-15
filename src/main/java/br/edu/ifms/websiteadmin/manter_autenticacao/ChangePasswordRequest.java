@@ -31,9 +31,9 @@ public class ChangePasswordRequest {
     @Size(min = 8, max = 255, message = "A nova senha deve conter no m√≠nimo 8 caracteres")
     private String novaSenha;
     
-    @NotEmpty(message = "A Confirma√ß√£o da senha n√£o deve ser vazia.")
-    @NotNull(message = "A Confirma√ß√£o da senha repetida deve ser informada.")
-    @Size(min = 8, max = 255, message = "A Confirma√ß√£o da senha deve conter no m√≠nimo 8 caracteres")
+    @NotEmpty(message = "A ConfirmaÁ„o da senha n√£o deve ser vazia.")
+    @NotNull(message = "A ConfirmaÁ„o da senha repetida deve ser informada.")
+    @Size(min = 8, max = 255, message = "A ConfirmaÁ„o da senha deve conter no m√≠nimo 8 caracteres")
     private String confirmarSenha;
 
 }

@@ -1,0 +1,59 @@
+# Log
+logging:
+    level:
+        root: INFO
+        org:
+            hibernate: error
+            springframework:
+                web: debug
+
+spring:
+    devtools:
+        add-properties: true
+    profiles: dev
+
+# #datasourde
+    datasource:
+        driverClassName: org.h2.Driver
+        url: ${H2_DATASOURCE_URL}
+        username: ${H2_DATASOURCE_USERNAME}
+        password: ${H2_DATASOURCE_PASSWORD}
+        plataform: dev
+        initialization-mode: ALWAYS
+    jpa:
+        show-sql: true
+        properties: 
+            dialect: org.hibernate.dialect.H2Dialect
+
+        hibernate:
+            ddl-auto: create-drop
+            jdbc:
+                lob:
+                    non_contextual_creation: true
+            hibernate:
+                format_sql: true
+#Hibernate will merge each entity copy detected while cascading the merge operation. In the process of merging each entity copy
+            event:
+                merge:
+                    entity_copy_observer: allow
+    
+# SQL prod/test
+    sql:
+        init:
+            mode: ALWAYS
+    h2:
+        console:
+            enabled: true
+            path: /h2-console
+## MULTIPART (MultipartProperties)
+# Enable multipart uploads
+    servlet:
+        multipart:
+            location: ${user.dir}/webapps/tmp
+
+#Website admin properties
+rpas:
+    from: no-reply@website-admin.edu.br
+    reset-password-token-expiration: 3600000
+    reset-register-code-expiration: 3600000
+    urlFrontEnd: http://localhost:7000/api

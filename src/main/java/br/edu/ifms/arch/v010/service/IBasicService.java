@@ -9,8 +9,8 @@ import org.springframework.data.domain.Pageable;
 
 /**
  * Interface para Servicos. Interface utilizada para definir os métodos básicos para a
-  implementação dos serviços básicos que serão disponibilizados
-  para a aplicação cuja Classe de Negócio seja subclasse de
+  implementa��o dos serviços básicos que serão disponibilizados
+  para a aplica��o cuja Classe de Negócio seja subclasse de
   <class>BaseObject</class>.
  * @param <K>
  * @param <F>

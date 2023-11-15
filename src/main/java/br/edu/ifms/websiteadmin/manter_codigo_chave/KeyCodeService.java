@@ -53,8 +53,8 @@ public class KeyCodeService extends
     }
     
     /**
-     * Gerar código de verificação. Este método é responsável por gerar o código
-     *  de verificação. Caso já exista um código de verificação ativo para o
+     * Gerar código de verifica��o. Este método é responsável por gerar o código
+     *  de verifica��o. Caso já exista um código de verifica��o ativo para o
      *  e-mail informado então ele será desativado para que um novo seja criado.
      * @param email
      * @param senha
@@ -69,7 +69,7 @@ public class KeyCodeService extends
         desativarCodigosPor(email);
 
         /**
-         * Gera o código de verificação de 6 dígitos
+         * Gera o código de verifica��o de 6 dígitos
          */
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         var keyCode = KeyCode.builder()
@@ -97,14 +97,14 @@ public class KeyCodeService extends
     public void enviarCodigoPorEmail(KeyCode keyCode) throws URISyntaxException, IOException {
         /**
 //         * Envia um e-mail para o usuário informando sobre o código de
-//         * verificação
+//         * verifica��o
 //         */
 //        String mailVerificatioPath = "/templates/mail/codigo-verificacao.html";
 //        URL urlMail = getClass().getResource(mailVerificatioPath);
 //        /**
 //         * Captura o html do arquivo de e-mail Substitui as variáveis existente
 //         * no texto, por exemplo: %%codigo-verificacao%% - pelo código de
-//         * verificação gerado
+//         * verifica��o gerado
 //         */
 //        String mailContent = FileUtility.getContentFromTextFile(urlMail)
 //                .replaceAll("%%codigo-verificacao%%",
@@ -113,7 +113,7 @@ public class KeyCodeService extends
 //         * Prepara o envio do e-mail
 //         */
 //        MimeMessage mime = mailService.prepareEmail(
-//                "Código de verificação - Sistema de Avaliação de Projetos de Pesquisa",
+//                "Código de verifica��o - Sistema de Avalia��o de Projetos de Pesquisa",
 //                keyCode.getMail(),
 //                mailContent);
 //        /**
@@ -123,8 +123,8 @@ public class KeyCodeService extends
     }
 
     /**
-     * Envio de código de verificação. Método utilizado para enviar o código de
-     * verificação para o advogado que está se inscrevendo no sistema
+     * Envio de código de verifica��o. Método utilizado para enviar o código de
+     * verifica��o para o advogado que está se inscrevendo no sistema
      *
      * @param form
      * @throws java.security.InvalidKeyException
@@ -144,7 +144,7 @@ public class KeyCodeService extends
         }
 
         /**
-         * Gera o código de verificação de 6 dígitos
+         * Gera o código de verifica��o de 6 dígitos
          */
         var keyCode = gerarCodigoVerificacao(email, form.getSenha());
 
@@ -155,7 +155,7 @@ public class KeyCodeService extends
     }
 
     /**
-     * Verificação de chave de código. Verifica se o código informado pelo
+     * Verifica��o de chave de código. Verifica se o código informado pelo
      * usuário é válido para dar sequência no cadastro do advogado.
      *
      * @param code

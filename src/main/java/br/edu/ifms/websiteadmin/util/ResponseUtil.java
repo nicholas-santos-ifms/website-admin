@@ -19,7 +19,7 @@ public class ResponseUtil {
     
     private static final String TOO_MANY_FAILED_LOGINS = "Muitas tentativas de login malsucedidas. Favor, tente amanhã novamente.";
     private static final String UNAUTHORIZED_ORIGIN = "Você não tem permissão para acessar este recurso dessa origem.";
-    private static final String TOO_MANY_FAILED_IP_LOGINS = "Seu endereço IP falhou na autenticação muitas vezes hoje.";
+    private static final String TOO_MANY_FAILED_IP_LOGINS = "Seu endereço IP falhou na autentica��o muitas vezes hoje.";
     private static final String INVALID_CREDENTIALS = "Credenciais inválidas";
     
     

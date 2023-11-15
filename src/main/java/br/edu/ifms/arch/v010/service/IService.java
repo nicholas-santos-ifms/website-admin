@@ -13,8 +13,8 @@ import org.springframework.data.domain.Pageable;
 /**
  * Interface para Servicos.
  * Interface utilizada para definir os métodos básicos para a
- *  implementação dos serviços básicos que serão disponibilizados
- *  para a aplicação.
+ *  implementa��o dos serviços básicos que serão disponibilizados
+ *  para a aplica��o.
  * @since 02/11/2022
  * @author nicho
  * @param <T>   Classe de Negócio a ser implementada
@@ -25,7 +25,7 @@ import org.springframework.data.domain.Pageable;
 public interface IService<T, K, F, R> {
     
     /**
-     * Atribuição do Repository.
+     * Atribui��o do Repository.
      * Este método tem a finalidade de determinar qual será o 
      *  objeto que representa a classe de persistência de dados
      *  no banco de dados conforme o padr�o Repository.
@@ -34,7 +34,7 @@ public interface IService<T, K, F, R> {
     void setRepository(R repository);
     
     /**
-     * Atribuição do Objeto de Mapeamento. Atribuição do objeto 
+     * Atribui��o do Objeto de Mapeamento. Atribui��o do objeto 
      * responsável por mapear um DTO to Entity e vice-versa
      * @param mapper 
      */
@@ -42,7 +42,7 @@ public interface IService<T, K, F, R> {
 
     /**
      * Listagem de dados. Este método tem a finalidade de buscar uma lista de
-     * dados da Classe de Negócio <T> de acordo com a descrição do parâmetro
+     * dados da Classe de Negócio <T> de acordo com a descri��o do parâmetro
      * NOME e da PAGINACAO
      *
      * @since 11-02-2022

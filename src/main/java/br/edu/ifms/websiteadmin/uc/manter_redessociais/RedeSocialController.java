@@ -4,7 +4,6 @@
  */
 package br.edu.ifms.websiteadmin.uc.manter_redessociais;
 
-import br.edu.ifms.arch.v010.controller.AbstractBasicController;
 import br.edu.ifms.arch.v010.controller.AbstractSimpleController;
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
