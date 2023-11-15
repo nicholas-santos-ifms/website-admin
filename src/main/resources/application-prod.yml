@@ -11,6 +11,8 @@ debug: false
 
 #Profile
 spring:
+#    application:
+#        name: websiteadmin
     config:
         activate:
             on-profile: prod

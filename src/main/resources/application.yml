@@ -4,9 +4,13 @@
 # porta do tomcat
 server:
     port: 7000
+    servlet:
+        context-path: /websiteadmin
 
 #Profile
 spring:
+    application:
+        name: websiteadmin
     profiles:
         active: dev
 ## MULTIPART (MultipartProperties)

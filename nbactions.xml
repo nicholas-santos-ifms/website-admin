@@ -11,9 +11,9 @@
                 <goal>spring-boot:run</goal>
             </goals>
             <properties>
-                <Env.H2_DATASOURCE_URL>jdbc:h2:mem:webadmin-dev</Env.H2_DATASOURCE_URL>
-                <Env.H2_DATASOURCE_USERNAME>sa</Env.H2_DATASOURCE_USERNAME>
-                <Env.H2_DATASOURCE_PASSWORD></Env.H2_DATASOURCE_PASSWORD>
+                
+                
+                
                 <Env.PG_DATASOURCE_URL>jdbc:postgresql://localhost:5432/websiteadmindb?UseUnicode=false;characterEncoding=ISO-8859-1;charSet=ISO-8859-1</Env.PG_DATASOURCE_URL>
                 <Env.PG_DATASOURCE_USERNAME>websiteadmin</Env.PG_DATASOURCE_USERNAME>
                 <Env.PG_DATASOURCE_PASSWORD>websiteadmin</Env.PG_DATASOURCE_PASSWORD>

@@ -10,9 +10,9 @@
     </parent>
     <groupId>br.edu.ifms</groupId>
     <artifactId>website-admin</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>war</packaging>
-    <name>Website Admin</name>
+    <name>Website Admin - Desenvolvimento</name>
     <description>Área administrativa para manutenção de dados de um website.</description>
     <properties>
         <java.version>17</java.version>
@@ -199,7 +199,8 @@
     <build>
         <finalName>websiteadmin</finalName>
         <plugins>
-            <plugin>
+            <!--Desabilitar esse plugin para poder fazer a implantação no tomcat-->
+<!--            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <executions>
@@ -209,21 +210,12 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
-                    <!-- Latin1 is still the default for .properties files -->
-                    <!--<propertiesEncoding>ISO-8859-1</propertiesEncoding>-->
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
                 </configuration>
             </plugin>
             <plugin>

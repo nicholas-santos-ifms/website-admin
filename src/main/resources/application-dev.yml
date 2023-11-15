@@ -15,8 +15,11 @@ logging:
                     core:
                         StatementCreatorUtils: TRACE
                         JdbcTemplate: INFO
-                        
+
+# config para tomcat
 spring:
+#    application:
+#        name: websiteadmin-dev
     config:
         activate:
             on-profile: dev
@@ -26,9 +29,9 @@ spring:
 # #datasourde
     datasource:
         driverClassName: org.h2.Driver
-        url: ${H2_DATASOURCE_URL}
-        username: ${H2_DATASOURCE_USERNAME}
-        password: ${H2_DATASOURCE_PASSWORD}
+        url: jdbc:h2:mem:webadmin-dev
+        username: sa
+        password: 
         plataform: dev
         initialization-mode: ALWAYS
     jpa:
