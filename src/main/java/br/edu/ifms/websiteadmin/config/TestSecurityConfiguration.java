@@ -44,7 +44,7 @@ public class TestSecurityConfiguration {
         http.requestCache(cache -> cache.requestCache(nullRequestCache));
 
         /**
-         * Autorização de requisiÃ§Ãµes no servidor
+         * Autorização de requisições no servidor
          */
         http.authorizeHttpRequests(authorize
                 -> authorize
@@ -53,7 +53,7 @@ public class TestSecurityConfiguration {
         );
 
         /**
-         * Configuração do CORS para permitir acesso de aplicaÃ§Ãµes externas
+         * Configuração do CORS para permitir acesso de aplicações externas
          */
         http.cors();
         /**

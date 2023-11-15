@@ -8,7 +8,7 @@ server:
 #Profile
 spring:
     profiles:
-        active: prod
+        active: dev
 ## MULTIPART (MultipartProperties)
 # Enable multipart uploads
     servlet:

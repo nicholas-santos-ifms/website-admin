@@ -11,9 +11,11 @@ debug: false
 
 #Profile
 spring:
+    config:
+        activate:
+            on-profile: prod
     devtools:
         add-properties: false
-    profiles: prod
 
 ## Datasourde
     datasource:

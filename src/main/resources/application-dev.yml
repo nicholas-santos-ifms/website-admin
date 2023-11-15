@@ -4,13 +4,24 @@ logging:
         root: INFO
         org:
             hibernate: error
+            SQL: DEBUG
+            type:
+                descriptor:
+                    sql:
+                        BasicBinder: TRACE
             springframework:
                 web: debug
-
+                jdbc:
+                    core:
+                        StatementCreatorUtils: TRACE
+                        JdbcTemplate: INFO
+                        
 spring:
+    config:
+        activate:
+            on-profile: dev
     devtools:
         add-properties: true
-    profiles: dev
 
 # #datasourde
     datasource:
@@ -22,7 +33,9 @@ spring:
         initialization-mode: ALWAYS
     jpa:
         show-sql: true
-        properties: 
+        format-sql: true
+        properties:
+            format_sql: true
             dialect: org.hibernate.dialect.H2Dialect
 
         hibernate:
@@ -30,8 +43,9 @@ spring:
             jdbc:
                 lob:
                     non_contextual_creation: true
-            hibernate:
-                format_sql: true
+#            hibernate:
+#                format_sql: true
+#                show-sql: true
 #Hibernate will merge each entity copy detected while cascading the merge operation. In the process of merging each entity copy
             event:
                 merge:

@@ -8,6 +8,7 @@ package br.edu.ifms.websiteadmin.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -19,9 +20,10 @@ import org.springframework.security.web.savedrequest.RequestCache;
  *
  * @author nicholas.santos
  */
-@Profile("dev")
+@Profile(value = {"dev"})
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
 public class DevSecurityConfiguration {
 
     /**
@@ -45,7 +47,7 @@ public class DevSecurityConfiguration {
         http.requestCache(cache -> cache.requestCache(nullRequestCache));
 
         /**
-         * Autorização de requisiÃ§Ãµes no servidor
+         * Autorização de requisições no servidor
          */
         http.authorizeHttpRequests(authorize
                 -> authorize
@@ -54,7 +56,7 @@ public class DevSecurityConfiguration {
         );
 
         /**
-         * Configuração do CORS para permitir acesso de aplicaÃ§Ãµes externas
+         * Configuração do CORS para permitir acesso de aplicações externas
          */
         http.cors();
         /**

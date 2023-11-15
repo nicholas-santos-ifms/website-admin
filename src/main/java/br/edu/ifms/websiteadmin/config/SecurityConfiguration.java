@@ -27,7 +27,7 @@ import org.springframework.security.web.savedrequest.RequestCache;
  * @author nicholas.santos
  */
 
-@Profile(value = {"prod", "dev"})
+@Profile(value = {"prod"})
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
@@ -67,6 +67,7 @@ public class SecurityConfiguration {
          */
         http.authorizeHttpRequests(authorize
                 -> authorize
+                        // autenticação
                         .requestMatchers(HttpMethod.POST, "/api/auth")
                             .permitAll()
                         .requestMatchers("/api/auth/logout")
@@ -90,12 +91,10 @@ public class SecurityConfiguration {
                             .permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/publicacao", "/api/publicacao/*")
                             .permitAll()
-                        // autenticação
-                        .requestMatchers("/api/auth", "/api/auth/**").permitAll()
-                        // visualização do swagger e do h2
-                        .requestMatchers("swagger-ui/**", "h2-console/**").permitAll()
-                        // exige que a partir daqui qualquer requisição deve exigir autenticação
-                        .anyRequest().permitAll()
+//                        // visualização do swagger e do h2
+//                        .requestMatchers("swagger-ui/**", "h2-console/**").permitAll()
+//                        // exige que a partir daqui qualquer requisição deve exigir autenticação
+//                        .anyRequest().permitAll()
                         
                         // exige que a partir daqui qualquer requisição deve exigir autenticação
                         .anyRequest().authenticated()
