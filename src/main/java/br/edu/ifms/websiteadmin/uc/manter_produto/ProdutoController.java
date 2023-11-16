@@ -5,7 +5,6 @@
 package br.edu.ifms.websiteadmin.uc.manter_produto;
 
 import br.edu.ifms.arch.v010.controller.AbstractSimpleController;
-import jakarta.transaction.Transactional;
 import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +14,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -94,27 +90,6 @@ public class ProdutoController extends AbstractSimpleController<
                 .map(entity -> ResponseEntity
                 .ok(mapper.toDto(entity)))
                 .orElse(ResponseEntity.notFound().build());
-    }
-
-    @PostMapping
-    @Transactional
-    @Override
-    public ResponseEntity<ProdutoDto> cadastrar(ProdutoForm form, UriComponentsBuilder uriBuilder) {
-        return ResponseEntity.notFound().build();
-    }
-
-    @PutMapping("/{id}")
-    @Transactional
-    @Override
-    public ResponseEntity<ProdutoDto> atualizar(Long id, ProdutoForm form) {
-        return ResponseEntity.notFound().build();
-    }
-
-    @DeleteMapping("/{id}")
-    @Transactional
-    @Override
-    public ResponseEntity<?> remover(Long id) {
-        return ResponseEntity.notFound().build();
     }
 
 }

@@ -1,6 +1,3 @@
-#Env.H2_DATASOURCE_URL=jdbc:h2:mem:rpas-dev
-#Env.H2_DATASOURCE_USERNAME=sa
-#Env.H2_DATASOURCE_PASSWORD=
 # porta do tomcat
 server:
     port: 7000

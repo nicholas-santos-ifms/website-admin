@@ -5,14 +5,9 @@
 package br.edu.ifms.websiteadmin.uc.manter_empresa;
 
 import br.edu.ifms.arch.v010.controller.AbstractBasicController;
-import jakarta.transaction.Transactional;
 import java.net.URI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -39,27 +34,6 @@ public class EmpresaController extends AbstractBasicController<
         return uriBuilder.path("/api/empresa/{id}")
                 .buildAndExpand(entity.getId())
                 .toUri();
-    }
-
-    @PostMapping
-    @Transactional
-    @Override
-    public ResponseEntity<EmpresaDto> cadastrar(EmpresaForm form, UriComponentsBuilder uriBuilder) {
-        return ResponseEntity.notFound().build();
-    }
-
-    @PutMapping("/{id}")
-    @Transactional
-    @Override
-    public ResponseEntity<EmpresaDto> atualizar(Long id, EmpresaForm form) {
-        return ResponseEntity.notFound().build();
-    }
-
-    @DeleteMapping("/{id}")
-    @Transactional
-    @Override
-    public ResponseEntity<?> remover(Long id) {
-        return ResponseEntity.notFound().build();
     }
 
 }
