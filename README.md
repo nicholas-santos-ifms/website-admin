@@ -9,4 +9,6 @@ Script para criação de usuário e banco de dados da aplicação:
 CREATE ROLE websiteadmin LOGIN PASSWORD 'websiteadmin';
 
 CREATE DATABASE websiteadmindb OWNER websiteadmin;
+
+GRANT ALL PRIVILEGES ON DATABASE websiteadmindb TO websiteadminn;
 ```
